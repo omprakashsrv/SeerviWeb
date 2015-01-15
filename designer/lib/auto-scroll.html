@@ -1,0 +1,62 @@
+
+<link rel="import" href="my-card/my-card.html">
+<script src="jquery-1.11.1.min.js"></script>
+<polymer-element name="auto-scroll">
+
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width=500px;
+        box-sizing: border-box;
+		display:inline-block;
+      }
+
+    </style>
+
+  </template>
+
+<script>
+var s=1;
+var i = 0;
+$(document).ready(function () {
+scroll1();
+});
+$("#src").mouseover(function(){
+    s=0;
+});
+$("#src").mouseout(function(){
+    s=1;
+	i=window.pageYOffset;
+});
+var h = document.body.scrollHeight;
+function scroll1(){
+        setTimeout(function(){
+            if(s==1){
+                 window.scrollTo(0, i);
+                 i=i+1;
+            }
+            if(i==h-600){
+               reverseScroll();
+            }else{
+            scroll1();
+            }
+        },0);
+};
+function reverseScroll(){    
+       setTimeout(function(){
+            if(s==1){
+                 window.scrollTo(0, i);
+                 i=i-1;
+            }
+            if(i==-100){
+                scroll1();
+            }
+           else{
+                reverseScroll();
+           }
+        },0);  
+};
+</script>
+</polymer-element>
+

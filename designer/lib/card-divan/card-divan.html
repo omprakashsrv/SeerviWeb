@@ -1,0 +1,201 @@
+<link rel="import" href="../../components/paper-shadow/paper-shadow.html">
+<link rel="import" href="../../components/paper-item/paper-item.html">
+<link rel="import" href="../../components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../components/paper-button/paper-button.html">
+
+  
+  <link href="../../components/paper-dialog/paper-action-dialog.html" rel="import">
+<polymer-element noscript name="card-divan">
+
+  <template >
+    <style>    
+      :host{
+		font-family: 'RobotoDraft', sans-serif;
+		display:block;
+      }	
+	 img{
+	max-width: 100%;
+	height: auto;
+	padding:10px;	
+    display: block;
+	margin-left: auto;
+    margin-right: auto;
+	  }
+
+	div{
+	   margin:10px;	
+	}
+
+	#outer {
+    padding:20px;
+	width: auto;
+	margin: 20px;
+	margin-left:100px;
+	margin-right:100px;
+    }
+    div.rig {
+	list-style: none;
+	font-size: 0px;
+	margin-left: -2.5%;
+	
+	}
+	div.rig paper-shadow {
+	display: inline-block;
+	margin: 0 0 2.5% 2.5%;	
+	}
+
+div.rig.columns paper-shadow {
+	width: 22.5%; 
+}
+
+
+
+     
+    </style>
+<template is="auto-binding">
+ <section id="outer">   
+<div class="rig columns" > 
+  <paper-shadow >
+   <img src="divan/19.jpg" />
+   </paper-shadow>
+  
+   <paper-shadow  >
+   <img src="divan/18.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/17.jpg" />
+   </paper-shadow>
+    <paper-shadow  >
+   <img src="divan/16.jpg" />
+   </paper-shadow>
+
+    <paper-shadow >
+   <img src="divan/15.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/14.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/13.jpg" />
+   </paper-shadow>
+
+    <paper-shadow >
+   <img src="divan/12.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/11.jpg" />
+   </paper-shadow>
+   <paper-shadow >
+   <img src="divan/10.jpg" />
+   </paper-shadow>
+
+    <paper-shadow>
+   <img src="divan/9.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/8.jpg" />
+   </paper-shadow>
+   <paper-shadow >
+   <img src="divan/7.jpg" />
+   </paper-shadow>
+
+    <paper-shadow >
+   <img src="divan/6.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/5.jpg" />
+   </paper-shadow>
+   <paper-shadow >
+   <img src="divan/4.jpg" />
+   </paper-shadow>
+
+    <paper-shadow >
+   <img src="divan/3.jpg" />
+   </paper-shadow>
+    <paper-shadow >
+   <img src="divan/2.jpg" />
+   </paper-shadow>
+   <paper-shadow >
+   <img src="divan/1.jpg" />
+   </paper-shadow  class="bar">
+
+</div>
+
+ <div>Dialog Layouts</div>
+
+    <button>
+      Plain dialog
+    </button>
+
+    <paper-dialog>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </paper-dialog>
+
+    <button>
+      Dialog with heading
+    </button>
+
+    <paper-dialog heading="Title">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </paper-dialog>
+
+    <button>
+      Dialog with actions
+    </button>
+
+    <paper-action-dialog heading="Title">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+      <paper-button dismissive>More Info...</paper-button>
+      <paper-button affirmative>Decline</paper-button>
+      <paper-button affirmative autofocus>Accept</paper-button>
+    </paper-action-dialog>
+
+    <button>
+      Modal dialog with backdrop and actions
+    </button>
+
+    <paper-action-dialog backdrop autoCloseDisabled layered="false">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+      <paper-button affirmative autofocus>Tap me to close</paper-button>
+    </paper-action-dialog>
+
+</section>
+</template>
+  </template>
+
+  <script>
+
+ var scope = document.querySelector('template[is=auto-binding]');
+
+  scope.toggleDialog1 = function(e) {
+    if (e.target.localName != 'button') {
+      return;
+    }
+    var d = e.target.nextElementSibling;
+    if (!d) {
+      return;
+    }
+    d.toggle();
+  };
+
+  scope.transitions = [
+    'core-transition-center',
+    'core-transition-top',
+    'core-transition-bottom',
+    'core-transition-left',
+    'core-transition-right'
+  ];
+
+  scope.toggleDialog2 = function(e) {
+    if (e.target.localName != 'button') {
+      return;
+    }
+    scope.transition = e.target.getAttribute('transition');
+    document.getElementById('dialog2').toggle();
+  };
+
+  </script>
+  
+</polymer-element>

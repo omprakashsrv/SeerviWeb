@@ -1,0 +1,16 @@
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="test-view" attributes="url">
+<template>
+    <core-ajax auto url="{{url}}" handleAs="json" on-core-response="{{ajaxResponse}}"></core-ajax>
+    <div id="body"></div>
+</template>
+<script>
+    Polymer({
+        ajaxResponse: function(e) {
+            console.log(e.detail.response);
+        }
+    });
+</script>
+</polymer-element>

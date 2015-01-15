@@ -1,0 +1,73 @@
+
+<link rel="import" href="../components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../components/core-animated-pages/transitions/hero-transition.html">
+<link rel="import" href="../components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../components/core-animated-pages/transitions/slide-down.html">
+<link rel="import" href="../components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../components/core-animated-pages/transitions/tile-cascade.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-image/core-image.html">
+
+<polymer-element name="photo-header">
+  <template>
+    <style>    
+      :host {
+		width:600px;
+		height:400px;
+        box-sizing: border-box;
+		display: inline-block;
+      }
+      core-animated-pages {
+        width:100%;
+        height: 100%;
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        background-color: rgb(238, 238, 238);
+      }
+	
+     img{
+		  max-width:100%;
+		  height:auto;
+		  display: block;
+	  }	 
+	  @media (max-width: 600px) {
+	   core-animated-pages {	
+	        }
+	  }
+    </style>
+    
+    <div layout horizontal center-justified>
+    <core-animated-pages  transitions="cross-fade" selected="{{ foo }}" selectedindex="0" notap id="core_animated_pages"  lastselected="0">
+      <section id="section">
+       <img tile-cascade cross-fade src="../../images/52.jpg" />
+      </section>
+      <section id="section1" >
+       <img tile-cascade cross-fade src="../../images/53.jpg" />
+      </section>
+      <section id="section2">
+       <img  tile-cascade cross-fade  src="../../images/54.jpg" />
+      </section>
+      <section id="section3">
+       <img  tile-cascade cross-fade  src="../../images/56.jpg" />
+      </section>
+    </core-animated-pages>  
+   
+     </div>
+  </template>
+  <script>
+    Polymer({		
+      foo: 0,
+	 imageRefresh:function(){
+		  if(this.$.core_animated_pages.selected==3){
+        this.foo=0;
+        }else{
+         this.foo=1+this.$.core_animated_pages.selected;
+        }
+		 this.async(this.imageRefresh, null, 2000);		
+	 },
+	  created:     function () { console.log("component-two created"); },
+      ready:       function () { this.async(this.imageRefresh, null, 2000); },
+      enteredView: function () { console.log('component-two entered view'); },
+      leftView:    function () { console.log('component-two left view'); }
+    });
+  </script>
+</polymer-element>

@@ -1,0 +1,109 @@
+  <link rel="import" href="../components/paper-shadow/paper-shadow.html" >
+  <link rel="import" href="../components/core-ajax/core-ajax.html"> 
+  <link rel="import" href="../components/paper-dialog/paper-action-dialog.html">
+  <link rel="import" href="../components/paper-dialog/paper-dialog-transition.html">
+  <link rel="import" href="../components/paper-item/paper-item.html">
+  
+<polymer-element name="news-card">
+
+<template>
+    <style>    
+#section1 {  
+		 height:400px; 	  
+		 overflow:auto;
+		 padding:5px;
+        background:rgb(64,128,128);
+		border-radius:10px;		
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		 }
+		marquee{
+			height:320px;  
+		}
+		paper-item{
+			width:298px;
+			text-align:center justify;
+			box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+			cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+		}
+		h2{
+		color:rgb(255,255,255);	
+		}
+		#src{
+		background:#FFFFFF;	
+		}
+		a{
+    text-decoration: none;
+    color:#000099;
+	
+     }
+	 h4{
+		width:280px; 
+	 }
+  </style>
+<core-ajax auto url="http://117.228.162.45:27747/news"  handleAs="json"  method="GET" response="{{}}"></core-ajax>
+ <paper-shadow id="section1" layout vertical center>
+    <h2> News Updates</h2>
+    <div id="src">
+    <marquee direction="up"  scrollamount="4" onMouseOver="this.stop();" onMouseOut="this.start();">
+    <template repeat="{{s in news}}">
+    
+      <paper-item on-tap="{{showNews}}">
+  <h4>{{ s.heading }}</h4>
+   </paper-item>
+    <paper-action-dialog transition="core-transition-right">
+    <div layout vertical>
+  <h2>{{ s.heading }}</h2>
+  <h4>{{s.content}}</h4>
+  </div>
+  </paper-action-dialog>
+    </template>
+    </marquee>
+    </div>
+  </paper-shadow>
+ 
+</template>
+
+ <script>
+
+   Polymer('news-card', {
+	   news:[
+	   	   {"heading":"News1","content":"Content1"},
+	   {"heading":"News2","content":"Content2"},
+	   {"heading":"News3","content":"Content3"},
+	   {"heading":"News4","content":"Content4"},
+	   {"heading":"News5","content":"Content5"},
+	   {"heading":"News6","content":"Content6"},
+	   {"heading":"News7","content":"Content7"},
+	   {"heading":"News8","content":"Content8"},
+	   {"heading":"News9","content":"Content9"},
+	   {"heading":"News10","content":"Content10"},
+	   {"heading":"News11","content":"Content12"},
+	   {"heading":"News12","content":"Content13"},
+	   {"heading":"News13","content":"Content14"},
+	   ],
+        ready: function() {
+			
+        },
+		showNews: function(e){
+			if (e.target.localName != 'paper-item') {
+      return;
+    }
+     var d = e.target.nextElementSibling;
+    if (!d) {
+      return;
+    }
+    d.toggle();
+			
+		}		
+    });
+
+
+</script>
+
+
+</polymer-element>

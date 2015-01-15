@@ -1,0 +1,17 @@
+{
+  "tape1": {
+    "title": "My first mixtape",
+    "description": "Yicon f sofsf",
+    "songs": [{
+      "title": "Kaise Bataaon",
+      "artist": "3G",
+      "file":"/mp3/KaiseBataaoon.mp3",
+      "length": "04:42"
+    },{
+      "title": "Tu janne na",
+      "artist": "Ajab prem ki gajab kahani",
+      "file":"/mp3/Tu-jaane-na(remix).mp3",
+      "length": "06:06"
+    }]
+  }
+}

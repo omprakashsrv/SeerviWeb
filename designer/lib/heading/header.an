@@ -1,0 +1,81 @@
+
+{
+
+	"HTMLFileName":"header.html",
+	"expanded:images/49.jpg":"nil",
+	"expanded:images/53.jpg":"nil",
+	"pref__general__AutoKeyframeProperties":"true",
+	"expanded:images/52.jpg":"nil",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"expanded:images/111.jpg":"nil",
+	"stage-Default Timeline_mark_ms":"12000",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"Preloader-Default Timeline_playhead_ms":"0",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"TransitionIdCounter":"15",
+	"expanded:images/13.jpg":"nil",
+	"viewStartMs":"-193.24208580343",
+	"pref__general__AutoKeyframePropertiesArmed":"true",
+	"expanded:images/56.jpg":"nil",
+	"symbol_stage":{
+		"element_${__12}":{
+			"timelineColor2":"0x168c84",
+			"timelineColor3":"0x2a605c",
+			"animationEnabled":"false",
+			"timelineColor":"0x00a096"},
+		"dummyStageParentWidth":"800px",
+		"defaultStageParentHeight":"300px",
+		"dummyStageParentHeight":"300px",
+		"defaultStageParentWidth":"800px",
+		"element_${_Text}":{
+			"timelineColor2":"0x1aa38f",
+			"timelineColor3":"0x2a6a61",
+			"animationEnabled":"true",
+			"timelineColor":"0x00bda4"},
+		"element_${_Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"invisible":"false",
+			"timelineColor":"0xeedf79",
+			"animationEnabled":"false",
+			"timelineColor3":"0x7b7652"},
+		"element_${__111}":{
+			"timelineColor2":"0x81aa62",
+			"invisible":"false",
+			"timelineColor":"0x91c767",
+			"animationEnabled":"false",
+			"timelineColor3":"0x5b6c4d"}},
+	"PreloadAudio":"auto",
+	"CompZoomFactor":"100",
+	"viewStartY":"0",
+	"pixelsPerMs":"0.025874280849389",
+	"expanded:images/54.jpg":"nil",
+	"symbol_Preloader":{
+		"element_${_preloader5}":{
+			"timelineColor2":"0x4fa275",
+			"timelineColor3":"0x456a55",
+			"timelineColor":"0x50bd82"},
+		"dummyStageParentWidth":"550px",
+		"dummyStageParentHeight":"400px",
+		"defaultStageParentWidth":"550px",
+		"defaultStageParentHeight":"400px"},
+	"usedBOM":"false",
+	"expanded:images/12.jpg":"nil",
+	"stage-Default Timeline_playhead_ms":"12000",
+	"expanded:images/preloader5.gif":"nil",
+	"StageZoomFactor":"80",
+	"nextElementColorIndex":"6"}

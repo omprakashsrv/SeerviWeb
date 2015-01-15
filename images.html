@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>paper-dialog</title>
+
+  <link href="designer/lib/menu-bar.html" rel="import">
+  <link rel="import" href="designer/lib/fotter-bottom.html">
+  <script src="designer/components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link rel="import" href="designer/components/photo-album/photo-album.html">
+
+  <style shim-shadowdom>
+    body {
+      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+      font-size: 14px;
+      margin: 0;
+      padding: 24px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+    }
+
+
+
+  </style>
+
+</head>
+<body unresolved>
+<menu-bar selected="0">
+
+    <photo-album>
+<template is="auto-binding"  repeat="{{s in images}}">  
+
+ 
+    <photo-album-photo
+      thumbnail="{{ s.src }}"
+      src="{{ s.src }}"
+      caption="{{ s.details }}"></photo-album-photo>
+
+</template>
+  </photo-album>
+<footer-bottom style="width:100%;"></footer-bottom>
+
+</menu-bar>
+
+<script>
+
+
+  var scope = document.querySelector('template[is=auto-binding]');
+   scope.images = [
+   {src:'divan/19.jpg',details:'madhu singh ji'},
+   {src:'divan/18.jpg',details:'afbshb'},
+   {src:'divan/17.jpg',details:'afbshb'},
+   {src:'divan/16.jpg',details:'Divan Madho singh'},
+    {src:'divan/15.jpg',details:'Fivsnkss vs vs vs v'},
+	{src:'divan/14.jpg',details:'afbshb'},
+	{src:'divan/13.jpg',details:'afbshb'},
+	{src:'divan/12.jpg',details:'afbshb'},
+	{src:'divan/11.jpg',details:'afbshb'},
+	{src:'divan/10.jpg',details:'afbshb'},
+	{src:'divan/9.jpg',details:'afbshb'},
+	{src:'divan/8.jpg',details:'afbshb'},
+	{src:'divan/7.jpg',details:'afbshb'},
+	{src:'divan/6.jpg',details:'afbshb'},
+	{src:'divan/5.jpg',details:'afbshb'},
+	{src:'divan/4.jpg',details:'afbshb'},
+	{src:'divan/3.jpg',details:'afbshb'},
+	{src:'divan/2.jpg',details:'afbshb'},
+	{src:'divan/1.jpg',details:'afbshb'}
+  ];
+
+
+</script>
+
+</body>
+</html>

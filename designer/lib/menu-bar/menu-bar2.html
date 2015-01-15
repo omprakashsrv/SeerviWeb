@@ -1,0 +1,250 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<link rel="import" href="../components/core-scroll-header-panel/core-scroll-header-panel.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../components/core-icons/core-icons.html">
+<link rel="import" href="../components/core-menu/core-submenu.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-image/core-image.html">
+<link rel="import" href="../components/core-collapse/core-collapse.html">
+
+<link rel="import" href="../components/paper-item/paper-item.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-dialog/paper-action-dialog.html">
+<link rel="import" href="../components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../components/paper-dropdown/paper-dropdown.html">
+<link rel="import" href="../components/paper-shadow/paper-shadow.html">
+
+<polymer-element name="menu-bar">
+
+
+
+  <template>
+    <style>    
+	 .circle{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;	
+	 }   
+      #core_scroll_header_panel {
+        position: static;
+      }
+      #core_toolbar {
+        color: rgb(241, 241, 241);
+        fill: rgb(241, 241, 241);
+         background:rgb(64,128,128);
+      }
+      #section {
+        min-width: 1240px;  
+ 
+      }
+      #login {
+    border-radius:5px 0 0 5px;
+    margin-right: -5px;
+      }
+      #signup {
+          border-radius: 0 5px 5px 0;
+      }
+       .paperb{
+          text-transform: none;
+           font-size: 15px;
+           height: 30px;
+           background: #0000ff; 
+      
+      }
+      .paperb:hover{
+          background: #9999ff;         
+      }
+   
+core-item{
+    height: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+}
+   core-item.core-selected {
+  color: rgb(108,108,255);
+  background:#FFFFFF;
+}
+core-item:hover{
+    background: white;
+    color:blue;
+}
+
+core-submenu{
+    padding: 5px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+core-submenu:hover{
+    background: white;
+    color:blue;   
+}
+core-submenu::shadow #submenu {
+  margin-left: 5px;
+  background: blue;
+  border-radius: 5px;
+}
+.drop{
+      top: 60px;
+	 right:5px;
+	  width:200px;
+    }
+.buttond{
+	background:#7D51F4;
+	color:#FFFFFF;
+	height:40px;
+	width:100px;
+	font-size:15px;
+	text-transform:none;
+	margin:5px;
+}
+.buttond:hover{
+	background:#0000B0;
+}
+
+    </style>
+      <core-scroll-header-panel headermargin="42.66666666666667" headerheight="64" id="core_scroll_header_panel">
+      <core-toolbar id="core_toolbar" >
+        <div id="div" flex></div>
+        <core-menu selected="{{selected}}" selectedindex="2" id="core_menu" center-justified horizontal layout>
+          
+          <core-item icon="perm-contact-cal" label="Divans" horizontal center layout center-justified>
+            <a href="../../../divan.html"></a>
+          </core-item>
+          <core-item icon="description" label="News" horizontal center layout center-justified active>
+            <a id="a" href="../../../news.html"></a>
+          </core-item>
+          <core-submenu icon="perm-media" label="Gallary" center layout horizontal center-justified>
+         <div layout horizontal center-justified>
+            <core-item label="Images">
+              <a href="../../../images.html"></a>
+            </core-item>
+            <core-item label="Videos">
+              <a href="../../../videos.html"></a>
+            </core-item>
+         </div>
+          </core-submenu>
+          <core-submenu  icon="file-download" label="Downloads" layout horizontal center center-justified>
+         <div layout horizontal center-justified>
+            <core-item label="Ringtone" >
+              <a href="../../../ringtone.html"></a>
+            </core-item>
+            <core-item label="Wallpaper">
+              <a href="../../../wallpaper.html"></a>
+            </core-item>
+            <core-item label="Mp3 Audio">
+              <a href="../../../mp3audio.html"></a>
+            </core-item>
+            <core-item  label="Videos" >
+              <a href="../../../videos.html"></a>
+            </core-item>
+           </div>
+          </core-submenu>
+        </core-menu>
+        
+     
+        <paper-shadow  layout horizontal on-tap="{{toggle}}">
+          <paper-item style="padding:5px; border-radius:5px; height:50px; background:rgb(80,160,160);" layout horizontal>
+        <div layout horizontal>
+        <div layout horizontal center-justified center>OMPRAKASH SEERVI
+        </div>
+       <core-image class="circle" style="width:40px; height:40px; margin-left:5px; background-color: lightgray;" 
+  sizing="cover" preload src="http://lorempixel.com/40/40"></core-image>
+        </div>
+        </paper-item>
+        </paper-shadow>
+                
+        <paper-dropdown class="drop" id="paper_dropdown">
+         <div layout vertical center style="color:#000000; width:200px; font-size:15px;">omprakashsrv@gmail.com
+        </div>
+            <core-image style="width:200px; height:200px;  background-color: lightgray;" 
+  sizing="cover" preload src="http://lorempixel.com/200/200"></core-image>
+  <div layout horizontal>
+           <paper-button raised class="buttond" layout horizontal center-justified on-tap="{{goSignup}}">View Profile</paper-button>
+             <paper-button raised class="buttond" layout horizontal center-justified on-tap="{{goSignup}}">Sign out</paper-button>
+             </div>
+        </paper-dropdown>
+   
+     <!--   <paper-button raised id="login" layout horizontal center-justified on-tap="{{dialogLogin}}">Login</paper-button>
+        <paper-button raised id="signup" layout horizontal center-justified on-tap="{{dialogSignup}}">Signup</paper-button>
+    -->  </core-toolbar>
+      <section id="section" >
+<content>
+    
+</content>
+        </section>
+    </core-scroll-header-panel>
+    
+ <paper-action-dialog transition="core-transition-top" backdrop id="login">
+ <div  layout vertical center>
+ <paper-input-decorator floatingLabel  label="Email" id="username" error="Enter a valid email id" isInvalid="{{!$.email.validity.valid}}">
+        <input id="email" is="core-input" type="email">
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Password" id="password" error="Must have at least 6 charator" isInvalid="{{!$.pass.validity.valid}}">
+        <input id="pass" is="core-input" type="password" pattern=".{6,}">
+    </paper-input-decorator>
+    
+     <paper-button raised  class="colored paperb" layout horizontal center-justified on-tap="{{goLogin}}" link="home.html">Login</paper-button>
+        <paper-button raised  class="colored paperb" layout horizontal center-justified on-tap="{{goSignup}}">Register</paper-button>
+     </div>
+    </paper-action-dialog>
+<paper-action-dialog backdrop transition="core-transition-top" id="signup">
+      <div  layout vertical center>
+       <paper-input-decorator floatingLabel label="First Name" id="fname" error="Enter a valid name" isInvalid="{{!$.fname.validity.valid}}">
+        <input id="fname" is="core-input" type="text" pattern=".{3,}">
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Last Name" id="lname" error="not a valid last name" isInvalid="{{!$.lname.validity.valid}}">
+        <input id="lname" is="core-input" type="text" pattern=".{3,}">
+    </paper-input-decorator>
+ <paper-input-decorator floatingLabel label="Email" id="username" error="Enter a valid email id" isInvalid="{{!$.email.validity.valid}}">
+        <input id="email" is="core-input" type="email">
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Date of Birth" id="dob" error="Must have at least 6 charator" isInvalid="{{!$.date.validity.valid}}">
+        <input id="date" is="core-input" type="date">
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Password" id="password" error="Must have at least 6 charator" isInvalid="{{!$.pass.validity.valid}}">
+        <input id="pass" is="core-input" type="password" pattern=".{6,}">
+    </paper-input-decorator>
+    
+
+        <paper-button raised  class="colored paperb" layout horizontal center-justified on-tap="{{goSignup}}">Register</paper-button>
+        <paper-button raised  class="colored paperb" layout horizontal center-justified on-tap="{{dialogSignup}}">Dismiss</paper-button>
+     </div>
+    </paper-action-dialog>
+  </template>
+
+
+ <script>
+
+    Polymer('menu-bar',{
+  dialogLogin: function(e) {
+        this.$['login'].toggle();
+		
+    },
+   dialogSignup: function(e) {
+        this.$['signup'].toggle();
+    },
+      goSignup: function(e) {
+		this.$['login'].toggle();
+        this.$['signup'].toggle();
+    },
+	 goLogin: function(e) {
+		this.$['login'].toggle();
+		window.location.href = e.target.getAttribute('link');
+    },
+       toggle: function() {
+        if (!this.dropdown) {
+          this.dropdown = this.$.paper_dropdown;
+        }
+        this.dropdown && this.dropdown.toggle();
+      }
+    });
+
+  </script>
+
+</polymer-element>

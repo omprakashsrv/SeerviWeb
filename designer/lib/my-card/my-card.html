@@ -1,0 +1,56 @@
+<link rel="import"  href="../../components/polymer/polymer.html">
+<link rel="import"  href="../../components/core-image/core-image.html">
+
+<polymer-element name="my-card" attributes="img" >
+
+  <template>
+    <style>    
+      :host {     
+        box-sizing: border-box;
+		display: inline-block;
+      }
+      ::content h2 {
+        color: blue;
+      }
+	   ::content h1 {
+        color:red;
+      }
+      core-card {
+		display: inline-block;     
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		padding: 15px;
+        background-color: rgb(255, 255, 255);
+		text-align: center;
+		width:100%;
+		height:100%;
+		text-align:justify;
+      }
+	  img{
+		width:100%; 
+		min-width:200px;
+		height: auto;
+	  }
+	 
+    </style>
+     
+      <core-card id="core_card" >
+      <div id="info" layout vertical center>
+        <img  sizing="contain" src="{{img}}" />
+        <content id="content">
+          
+       </content>
+      </div>
+    </core-card>
+   
+  </template>
+
+  <script>
+
+    Polymer({
+      
+    });
+
+  </script>
+
+</polymer-element>

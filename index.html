@@ -1,0 +1,160 @@
+
+<html>
+<head>
+
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Test Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+              <script src="designer/components/webcomponentsjs/webcomponents.js"></script>
+     <link rel="import" href="designer/lib/menu-bar.html">
+     <link rel="import" href="designer/lib/fotter-bottom.html">
+     <link rel="import" href="designer/components/paper-item/paper-item.html">
+     <link rel="import" href="designer/lib/photo-header.html">
+     <link rel="import" href="designer/lib/news-card.html">
+            <style>
+			
+	  body {
+		 font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+		display:block;
+	  -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-touch-callout: none;
+      }
+
+	 .circle{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;	
+	 }
+	
+	    .card {
+		display: inline-block;     
+        background-color: rgb(255, 255, 255);
+		
+      }
+	  paper-shadow{
+		border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		padding: 5px;
+	    text-align:center justify;
+}
+paper-item{
+border:solid thin rgb(126,190,190);	
+}
+
+#start{
+	width:300px;
+}
+
+#center{
+	width:600px;
+	padding:5px;
+}
+#end{
+	width:300px;
+}
+	#section1 {  
+		 height:400px; 	  
+		 overflow:auto;
+		 padding:5px;
+        background:rgb(64,128,128);
+		border-radius:10px;		
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		 }
+		marquee{
+			height:320px;  
+		}
+	
+		h2{
+		color:rgb(255,255,255);	
+		}
+		#src{
+		background:#FFFFFF;	
+		}
+		a{
+    text-decoration: none;
+    color:#000099;
+	
+     }
+ html /deep/  paper-input-decorator{
+	 width:300px;
+ }
+	 body /deep/ .colored {
+		 margin-top:10px;
+		 width:200px;
+      background: #4285f4;
+      color: #fff;
+    }
+	 body /deep/ .colored:hover {
+		 margin-top:10px;
+		 width:200px;
+      background: rgb(0,26,202);
+      color: #fff;
+    }
+	  body /deep/ .size {
+    width:400px;
+	background:rgb(226,226,226);
+    }
+	body  /deep/ paper-input-decorator /deep/ .input-body{
+border:#CCCCCC solid thin;
+border-radius:5px 5px 0 0;
+background:#FFFFFF;
+}
+
+body /deep/ paper-input-decorator /deep/ .unfocused-underline {
+    /* line color when the input is unfocused */
+    background-color: rgb(128,128,128);
+}
+
+	 </style>
+</head>
+<body fullbleed layout vertical center>
+
+<menu-bar selected="0">
+
+<div horizontal layout  center-justified>
+ <div  id="start" class="card" vertical layout >
+
+   <paper-item>
+   My Profile
+   </paper-item>
+  
+ <paper-item>
+   Messages
+   </paper-item>
+   
+ </div>
+ <div id="center" class="card" layout vertical center>
+ <paper-shadow >
+ <photo-header></photo-header>
+ </paper-shadow >
+ <paper-shadow >
+ <h4>
+  "सीरवी" एक क्षत्रिय कृषक जाति हैं. जो आज से लगभग 800 वर्ष पुर्व राजपूतों से अलग होकर राजस्थान के मारवाड़ व गौडवाड़ क्षेत्र में रह रही थी. कालान्तर के बाद यह लोग मेवाड़, मालवा, निम्हाड़ व देश के अन्य क्षेत्र में फेल गयें. वर्तमान में सीरवी समाज के लोग राजस्थान के अलवा मध्यप्रदेश , गुजरात , महाराष्ट्र , गोवा , कर्नाटक , आध्रप्रदेश , तमिलनाडु , केरल , दिल्ली , हिमाचल प्रदेश , दमन दीव , पांण्डिचेरी व देश के अन्य क्षैत्र में बड़ी संख्या में रह रहे हैं. 
+
+सीरवी समाज के इतिहास का बहुत कम प्रमाण उपलब्ध हैं. इतिहास के जानकार स्व. मास्टर श्री शिवसिंहजी चोयल भावी ( जिला जोधपुर ) वालों ने अपने सीमित सोधनों में जो कुछ भी तथ्य जुटाये उनके आधार पर खारड़िया राजपूतों का शासन जालोर पर था व राजा कान्हड़देव चौहान वंशीय थे उन्ही के वंश 24 गौत्रीय खारड़िया सीरवी कहलाये. सीरवियों के गौत्र इस प्रकार हैं. 1. राठौड़ 2. सोलंकी 3. गहलोत 4. पंवार 5. काग 6. बर्फा 7. देवड़ा 8. चोयल 9. भायल 10. सैणचा 11. आगलेचा 12. पड़ियार 13. हाम्बड़ 14. सिन्दड़ा 15. चौहान 16. खण्डाला 17. सातपुरा 18. मोगरेचा 19. पड़ियारिया 20. लचेटा 21. भूंभाड़िया 22. चावड़िया 23. मुलेवा 24. सेपटा. अधिकतर सीरवी आईमाता के अनुवयी हैं. श्री आईमाता का मंदिर राजस्थान के बिलाड़ा कस्बा में हैं. 
+</h4>
+   </paper-shadow>
+  
+</div>
+<div id="end"  class="card" layout vertical>
+
+  
+<news-card></news-card>
+
+<paper-shadow>
+  <h1>Introduction to site</h1>
+  </paper-shadow>
+</div>
+</div>
+
+</div>
+
+
+<footer-bottom style="width:100%;"></footer-bottom>
+</menu-bar>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html>
+<head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Test Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="import" href="designer/components/polymer/polymer.html">
+       <link rel="import" href="designer/components/google-youtube-upload/google-youtube-upload.html">
+       <link rel="import" href="designer/components/google-youtube/google-youtube.html">
+        
+     <script src="designer/components/webcomponentsjs/webcomponents.js"></script>
+
+     <link rel="import" href="designer/lib/menu-bar.html">
+     <link rel="import" href="designer/lib/fotter-bottom.html">
+     <link rel="import" href="designer/components/core-animated-pages/core-animated-pages.html">
+     <link rel="import" href="designer/components/core-transition/core-transition.html">
+     <link rel="import" href="designer/components/core-animated-pages/transitions/slide-from-bottom.html">
+     <link rel="import" href="designer/components/paper-item/paper-item.html">
+     <link rel="import" href="designer/components/core-selector/core-selector.html">
+     <link rel="import" href="designer/lib/post-news.html">
+     <link rel="import" href="designer/lib/news-card.html">
+     <link rel="import" href="designer/components/core-ajax/core-ajax.html">
+     <link rel="import" href="../../../xampp/htdocs/sass/designer/components/paper-button/paper-button.html">
+            <style>
+			
+	  body {
+		 font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+		display:block;
+		background:#E4E4E4;
+      }
+	   label {
+        display: block;
+        margin-top: 1em;
+      }
+
+      input {
+        font-size: 100%;
+        width: 50%;
+      }
+
+      textarea {
+        font-size: 100%;
+        width: 50%;
+        height: 6em;
+      }
+
+      google-youtube-upload {
+        margin-top: 1em;
+      }
+
+	 .circle{
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;	
+	 }
+	
+	    .card {
+		display: inline-block;     
+		min-height:500px;
+      }
+	  core-card{
+		     border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		padding: 5px;
+		text-align: center;
+		text-align:justify;
+	  }
+  
+#start{
+	width:300px;
+	
+}
+#center{
+	width:600px;
+	padding:5px;
+}
+#end{
+	width:300px;
+}
+	#section1 {  
+		 height:400px; 	  
+		 overflow:auto;
+		 padding:5px;
+        background:rgb(64,128,128);
+		border-radius:10px;		
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		 }
+		marquee{
+			height:320px;  
+		}
+		paper-shadow{
+			margin:5px;
+			text-align:center justify;
+		}
+		h2{
+		color:rgb(255,255,255);	
+		}
+		#src{
+		background:#FFFFFF;	
+		}
+		a{
+    text-decoration: none;
+    color:#000099;
+     }
+ 
+
+.pitem{
+background:rgb(255,255,255);
+border-radius:5px;
+color:rgb(153,153,153);
+border: solid thin rgb(204,204,204);	
+}
+.pitem:hover{
+color:#000000;	
+font-weight:bold;
+padding-left:5px;
+}
+
+.pitem.core-selected{
+background:#84C1C1;
+color:rgb(255,255,255);
+font-weight:bold;
+}
+
+	 </style>
+</head>
+<body fullbleed layout vertical center>
+
+<menu-bar>
+
+<div style="min-width:1240px;" horizontal layout   center-justified>
+ <div  id="start"  class="card" vertical layout >
+<core-selector selected="0" selectedAttribute="">
+   <paper-item class="pitem" id="1" onclick="stuff(this.id);">
+   My dashboard
+   </paper-item>
+  
+ <paper-item raised class="pitem" id="2" onclick="stuff(this.id);">
+  Add News
+   </paper-item>
+   
+    <paper-item raised class="pitem" id="3" onclick="stuff(this.id);">
+  Add Videos
+   </paper-item>
+    <paper-item raised class="pitem" id="4" onclick="stuff(this.id);">
+  Section 4
+   </paper-item>
+   </core-selector>
+ </div>
+ <div id="center" class="card" layout vertical>
+
+
+  <core-animated-pages style="overflow:visible;"  layout vertical center transitions="slide-from-bottom">
+  
+   <core-card class="card" style="background:red;">
+      Dash Board  nl
+      </core-card>
+
+      <core-card class="card" style="background:rgba(255,255,255,0.8);">
+        <post-news></post-news>
+      </core-card>
+  
+      <core-card class="card" style="background:rgba(255,255,255,0.8);">
+   
+      <template id="wrapper" is="auto-binding">
+
+ 
+      <template if="{{ state == 'pre-upload' }}">
+        <div>
+          <label for="video-title">Title:</label>
+          <input id="video-title" type="text" value="{{videoTitle}}">
+        </div>
+        <div>
+          <label for="description">Description:</label>
+          <textarea id="description" value="{{description}}"></textarea>
+        </div>
+        <div>
+          <label for="privacy-status">Privacy Status:</label>
+          <select id="privacy-status" value="{{privacyStatus}}">
+            <option>public</option>
+            <option>unlisted</option>
+            <option>private</option>
+          </select>
+        </div>
+        
+        
+      </template>
+
+   
+      <!-- This can't be wrapped in a <template if="..."> since it will be removed from
+           the DOM when the conditional is false. It needs to remain in the DOM so that
+           it continues firing state-related events. -->
+      <google-youtube-upload
+        id="google_youtube_upload"
+        style="display: {{ (state == 'pre-upload') ? 'block' : 'none' }}"
+        clientId="383194390239-3a86646k27cuapsr4mflk48l37q51n2b.apps.googleusercontent.com"
+        videoTitle="{{videoTitle}}"
+        description="{{description}}"
+        privacyStatus="{{privacyStatus}}"
+        videoId="{{videoId}}"
+        on-youtube-upload-start="{{handleYouTubeUploadStart}}"
+        on-youtube-upload-progress="{{handleYouTubeUploadProgress}}"
+        on-youtube-upload-complete="{{handleYouTubeUploadComplete}}"
+        on-youtube-upload-fail="{{handleYouTubeUploadFail}}"
+        on-youtube-processing-poll="{{handleYouTubeProcessingPoll}}"
+        on-youtube-processing-complete="{{handleYouTubeProcessingComplete}}"
+        on-youtube-processing-fail="{{handleYouTubeProcessingFail}}">
+      </google-youtube-upload>
+
+      <template if="{{ state == 'upload' }}">
+        <div>
+          Upload Progress:
+          <progress max="1" value="{{fractionComplete}}"></progress>
+          <span>{{megabytesPerSecond}}MB/s, {{minutesRemaining}}m{{secondsRemaining}}s remaining</span>
+        </div>
+      </template>
+
+      <template if="{{ state == 'upload-complete' }}">
+        <p>
+          Upload complete. Please wait while video id '{{videoId}}' is
+          <a href="https://support.google.com/youtube/answer/71674?ref_topic=2888603" target="_blank">processing</a>{{processingEllipses}}
+        </p>
+      </template>
+
+      <template if="{{ state == 'processing-complete' }}">
+        <p>
+          Processing complete. The video is available at
+          <a href="http://youtu.be/{{videoId}}" target="_blank">http://youtu.be/{{videoId}}</a>
+          and embedded below:
+        </p>
+        <google-youtube videoId="{{videoId}}"></google-youtube>
+      </template>
+
+      <template if="{{ state == 'error' }}">
+        <p>{{error}}</p>
+      </template>
+    </template>
+<button id="button" >Submit</button>
+<core-ajax id="postVideo" class="videos" body='dgdgdskmskm'
+     url="http://117.224.220.216:27747/videos" method="POST" headers={"Content-Type":"application/json"} contentType="text/json"></core-ajax>
+      </core-card>
+  
+      <core-card class="card" style="background:orange;">
+        4akfndkjfnk
+      </core-card>
+  
+      <core-card style="background:green;">
+        <div>5akfksjfbsjkbfk</div>
+      </core-card>
+  
+  </core-animated-pages>
+
+  
+</div>
+<div id="end"  class="card" layout vertical>
+
+<news-card></news-card>
+
+<core-card>
+  <h1>Introduction to site</h1>
+  </core-card>
+</div>
+</div>
+
+</div>
+
+
+</menu-bar>
+
+<script>
+
+
+ function stuff(e) {
+      var p = document.querySelector('core-animated-pages');    
+        p.selected = e-1;     
+    };
+
+	
+
+	
+	 var template = document.getElementById('wrapper');
+	 var ajax = document.querySelector('#postVideo');
+	
+	 document.getElementById("button").onclick = function() {myFunction()};
+
+function myFunction() {
+	ajax.body = {"videoId":template.videoId, "videoTitle":template.videoTitle, "videoDescription":template.description };
+    console.log(template.videoTitle);
+	console.log(ajax.body);
+}
+	
+	 
+      template.state = 'pre-upload';
+      template.processingEllipses = '...';
+
+      template.handleYouTubeUploadStart = function(e) {
+        template.state = 'upload';
+      };
+
+      template.handleYouTubeUploadProgress = function(e) {
+        template.megabytesPerSecond = (e.detail.bytesPerSecond / (1024 * 1024)).toFixed(2);
+        template.minutesRemaining = Math.floor(e.detail.estimatedSecondsRemaining / 60);
+        template.secondsRemaining = Math.round(e.detail.estimatedSecondsRemaining % 60);
+        template.fractionComplete = e.detail.fractionComplete;
+      };
+
+      template.handleYouTubeUploadComplete = function(e) {
+        template.state = 'upload-complete';
+      };
+
+      template.handleYouTubeUploadFail = function(e) {
+        template.error = e.detail;
+        template.state = 'error';
+      };
+
+      template.handleYouTubeProcessingPoll = function(e) {
+        template.processingEllipses += '.';
+      };
+
+      template.handleYouTubeProcessingComplete = function(e) {
+        template.state = 'processing-complete';
+		myFunction();
+      };
+
+      template.handleYouTubeProcessingFail = function(e) {
+        var error;
+        switch(e.detail.uploadStatus) {
+          case 'failed':
+            error = e.detail.failureReason || 'unknown error';
+          break;
+
+          case 'rejected':
+            error = e.detail.rejectionReason || 'unknown error';
+          break;
+
+          default:
+            error = 'unknown error';
+          break;
+        }
+
+        template.error = 'YouTube processing failed (' + error + ').';
+        template.state = 'error';
+      };
+	
+	
+</script>
+</body>
+</html>

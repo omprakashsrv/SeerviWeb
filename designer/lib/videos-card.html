@@ -1,0 +1,110 @@
+  <link rel="import" href="../components/paper-shadow/paper-shadow.html" >
+  <link rel="import" href="../components/core-ajax/core-ajax.html"> 
+  <link rel="import" href="../components/paper-dialog/paper-action-dialog.html">
+  <link rel="import" href="../components/paper-dialog/paper-dialog-transition.html">
+  <link rel="import" href="../components/paper-item/paper-item.html">
+  <link rel="import" href="../components/google-youtube/google-youtube.html">
+<polymer-element name="videos-card">
+
+<template>
+    <style>    
+	
+			div.rig.columns paper-shadow {
+	width: 45.0%; /* this value + 2.5 should = 50% */
+}
+div.rig {
+	list-style: none;
+}
+div.rig paper-shadow {
+	display: inline-block;
+	margin: 0 0 2.5% 2.5%;
+}
+section{
+	display: inline-block;
+	margin: 0 0 15% 15%;
+}
+  </style>
+<core-ajax auto url="http://117.228.162.45:27747/videos"  handleAs="json"  method="GET" core-response="{{videosResponse}}"></core-ajax>
+
+
+
+ <section  id="outer">
+    <div class="rig columns">
+    <template repeat="{{s in videos}}">
+      <paper-shadow >
+   <google-youtube
+  videoid="{{s.video_id}}"
+  rel="0"
+  start="5"
+>
+</google-youtube>
+<h3>{{s.title}}</h3>
+<h5>{{s.description}}</h5>
+   </paper-shadow>
+
+    </template>
+    </div>
+  </section>
+<core-selector on-tap="{{buttonClick}}" id="core_selector" layout horizontal center-justified>
+ </core-selector>
+ 
+</template>
+
+ <script>
+
+   Polymer('videos-card', {
+	   videos:[
+	   {"video_id":"72R7yO_Wpp4","title":"Aai Mata Ri Chundari","description":"Watch Rajasthani New Bhakti Geet Mhari Mata Re Aaiji Maat . Album : Aai Mata Ri Chundari Song : Mhari Mata Re Aaiji Maat "},
+	   {"video_id":"nAGKVs_-tMw","title":"Rajasthani Superhit Mataji New Bhajan","description":"Listen AAI MATAJI New Audio Bhajan in One"},
+	   
+	   ],
+	    data:[],
+        ready: function() {
+			
+        },
+		videosResponse :function(event, response){
+			this.data = response;
+			initialize();
+			toggleSect(1);
+		},
+				initialize: function(){
+				this.size = this.news.length;
+			this.sect = Math.ceil(this.size/10);
+			this.core = this.$.core_selector;
+			this.sec = 1;
+			for(this.i=0;this.i<this.sect;this.i++){
+				var obj = new Object();
+				this.html =this.sec;
+        this.el = document.createElement('paper-button');
+            this.el.id = this.sec;
+       this.el.innerHTML = this.html;
+        this.core.appendChild(this.el);
+        this.sec=this.sec+1;
+			}
+		},
+		toggleSect: function(x){
+			  this.data.splice(0,this.data.length);
+			   if(this.news.length<x+''+0){
+				    this.data = this.news.slice((x-1)+''+0,this.videos.length);
+			   }else{
+				   this.data = this.news.slice((x-1)+''+0,(x+''+0));
+			   }
+			},
+			buttonClick: function(e){
+				  if (e.target.localName != 'paper-button') {
+               return;
+			       }
+				     e = e || window.event;
+                 e = e.target || e.srcElement;
+			   console.log(e.id);
+			   this.toggleSect(e.id);
+			},
+		
+		
+    });
+
+
+</script>
+
+
+</polymer-element>

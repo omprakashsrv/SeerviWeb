@@ -1,0 +1,157 @@
+  <link rel="import" href="../components/paper-shadow/paper-shadow.html" >
+  <link rel="import" href="../components/core-ajax/core-ajax.html">
+   <link rel="import" href="../components/paper-item/paper-item.html">
+  <link rel="import" href="../components/core-collapse/core-collapse.html">
+  <link rel="import" href="../components/core-selector/core-selector.html">
+  <link rel="import" href="../components/paper-button/paper-button.html">
+  
+<polymer-element name="news-view">
+
+<template>
+    <style>    
+#section1 {  
+		 padding:5px;
+		border-radius:10px;		
+		box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+		 }
+		
+		
+	 .heading {
+		 width:800px;
+		 height:60px;
+      padding: 10px 15px;
+	  margin-top:5px;
+      background-color: #f3f3f3;
+      border: 1px solid #dedede;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    
+    .content {
+      padding: 15px;
+      border: 1px solid #dedede;
+      border-top: none;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+	core-selector{
+	max-width:1000px;	
+	overflow:auto;
+	}
+	paper-button{
+		margin:5px;
+	border-radius:5px;
+	border:thin solid rgb(204,204,204);	
+	}
+  </style>
+<core-ajax auto url="http://117.228.162.45:27747/news"  handleAs="json"  method="GET" core-response="{{newsResponse}}"></core-ajax>
+
+ <paper-shadow id="section1" layout vertical center>
+    
+    <template repeat="{{s in data}}">
+    <div id="src">
+      <paper-item class="heading" on-tap="{{showNews}}" layout horizontal>
+  <h3>{{ s.heading }}</h3>
+   </paper-item>
+    <core-collapse>
+    <div class="content" layout vertical>
+  <h5>{{s.content}}</h5>
+  </div>
+  </core-collapse>
+   </div>
+    </template>
+  </paper-shadow>
+ <core-selector on-tap="{{buttonClick}}" id="core_selector" layout horizontal>
+ </core-selector>
+</template>
+
+ <script>
+
+   Polymer('news-view', {
+	   data:[],
+	   news:[
+	   {"heading":"News1","content":"Content1"},
+	   {"heading":"News2","content":"Content2"},
+	   {"heading":"News3","content":"Content3"},
+	   {"heading":"News4","content":"Content4"},
+	   {"heading":"News5","content":"Content5"},
+	   {"heading":"News6","content":"Content6"},
+	   {"heading":"News7","content":"Content7"},
+	   {"heading":"News8","content":"Content8"},
+	   {"heading":"News9","content":"Content9"},
+	   {"heading":"News10","content":"Content10"},
+	   {"heading":"News11","content":"Content12"},
+	   {"heading":"News12","content":"Content13"},
+	   {"heading":"News13","content":"Content14"},
+	   ],
+        ready: function() {
+			this.toggleSect(1);
+		    this.initialize();
+		
+        },
+		newsResponse: function(event, response){
+		//	this.news = response;
+			this.toggleSect(1);
+		    this.initialize();
+		},
+		initialize: function(){
+				this.size = this.news.length;
+			this.sect = Math.ceil(this.size/10);
+			this.core = this.$.core_selector;
+			this.sec = 1;
+			for(this.i=0;this.i<this.sect;this.i++){
+				var obj = new Object();
+				this.html =this.sec;
+this.el = document.createElement('paper-button');
+this.el.id = 'button-'+this.sec;
+this.el.innerHTML = this.html;
+this.core.appendChild(this.el);
+this.sec=this.sec+1;
+			}
+			
+		},
+		toggleSect: function(x){
+			
+			  this.data.splice(0,this.data.length);
+			   if(this.news.length<x+''+0){
+				    this.data = this.news.slice((x-1)+''+0,this.news.length);
+			   }else{
+				   this.data = this.news.slice((x-1)+''+0,(x+''+0));
+			   }
+			},
+			buttonClick: function(e){
+				  if (e.target.localName != 'paper-button') {
+               return;
+			       }
+				     e = e || window.event;
+                 e = e.target || e.srcElement;
+			   console.log(e.id.substr(7));
+			   
+			   this.toggleSect(e.id.substr(7));
+			},
+		showNews: function(e){
+			 if (e.target.localName != 'paper-item') {
+                   return;
+                   }
+             var d = e.target.nextElementSibling;
+               if (!d) {
+                           return;
+                       }
+                    d.toggle();
+			}
+		
+		
+    });
+
+
+</script>
+
+
+</polymer-element>

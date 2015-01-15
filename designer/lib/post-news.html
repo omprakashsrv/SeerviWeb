@@ -1,0 +1,102 @@
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<link rel="import" href="../components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="../components/paper-toast/paper-toast.html">
+
+<polymer-element name="post-news">
+
+  <template>
+    <style>    
+     paper-input-decorator{
+		width:500px;
+		 
+	 }
+	  paper-input-decorator /deep/ .input-body{
+border:#CCCCCC solid thin;
+border-radius:5px 5px 0 0;
+background:#FFFFFF;
+}
+	 paper-input-decorator /deep/ ::-webkit-input-placeholder {
+    /* platform specific rules for placeholder text */
+    color:rgb(192,192,192);
+}
+ paper-input-decorator /deep/ ::-moz-placeholder {
+    color: rgb(192,192,192);
+}
+ paper-input-decorator /deep/ :-ms-input-placeholder {
+    color: rgb(192,192,192);
+}
+ paper-input-decorator /deep/ .unfocused-underline {
+    /* line color when the input is unfocused */
+    background-color: rgb(128,128,128);
+}
+
+
+	 .colored {
+		 margin-top:10px;
+		 width:200px;
+      background: #4285f4;
+      color: #fff;
+    }
+	  .colored:hover {
+		 margin-top:10px;
+		 width:200px;
+      background: rgb(0,26,202);
+      color: #fff;
+    }
+	
+	  .size {
+    width:400px;
+	background:rgb(226,226,226);
+    }
+	
+    </style>
+    <div layout vertical center >
+   <core-ajax id="postNews" url="http://117.224.220.216:27747/news" method="POST" body='{{ajaxbody}}' headers={"Content-Type":"application/json"} contentType="text/json"></core-ajax>
+    
+    <paper-input-decorator floatingLabel label="Heading" id="head"   error="Enter a valid heading" isInvalid="{{!$.head.validity.valid}}">
+        <input id="head" is="core-input" type="text" pattern=".{6,}" value="">
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Content" id="content" error="Enter some content" isInvalid="{{!$.con.validity.valid}}">
+       <textarea id="con" is="core-input" value=""  pattern=".{6,}" rows="4" cols="50" required></textarea>
+    </paper-input-decorator>
+    <paper-input-decorator floatingLabel label="Reporter" id="reporter"  error="not a valid name" isInvalid="{{!$.rname.validity.valid}}">
+        <input id="rname" is="core-input" type="text" pattern=".{3,}" value="">
+        </paper-input-decorator>
+ <paper-button raised  class="colored paperb" layout horizontal center-justified on-tap="{{goPost}}">Submit</paper-button>
+   </div>
+   <paper-toast id="error1" text="Make sure all Field's are valid !"></paper-toast>
+   <paper-toast id="sucess" text="Sucessfully submitted"></paper-toast>
+  </template>
+
+  <script>
+
+    Polymer({
+		heading:'',
+		content:'',
+		reporter:'',
+		ajaxbody:'',
+    pobj:'',
+
+		goPost:function(){
+			this.heading = this.$['head'].value;
+			this.content = this.$['con'].value;
+			this.reporter = this.$['rname'].value;
+			this.ajaxbody = {   "heading":this.heading,  "content": this.content,  "reporter": this.reporter };
+			if(this.$.head.validity.valid && this.$.rname.validity.valid && this.$.con.validity.valid ){
+			console.log(this.$['postNews'].body);
+			this.$['postNews'].go();
+			this.$.sucess.show();
+			}
+			else{
+			this.$.error1.show();
+			}
+		},
+        get:function(){
+        console.log("get");
+        }
+    });
+
+  </script>
+
+</polymer-element>
